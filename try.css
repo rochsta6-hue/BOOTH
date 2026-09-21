@@ -1,0 +1,389 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #000;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* Background Video */
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Sidebar Wrapper */
+.sidebar-container {
+    height: 100vh;
+    display: flex;
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+/* Vertical Icon Toolbar */
+.toolbar {
+    width: 60px;
+    height: 100%;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 15px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.tool-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: #bdc3c7;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.tool-btn.active {
+    background: #e74c3c;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
+}
+
+/* Sliding Side Panel Drawer */
+.side-panel {
+    width: 0;
+    height: 100%;
+    background: rgba(15, 15, 20, 0.92);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+    position: relative;
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.side-panel.open {
+    width: 300px;
+}
+
+/* Fixed Width Content Inner Wrapper */
+.panel-inner {
+    width: 300px;
+    padding: 40px 20px 20px 20px;
+    box-sizing: border-box;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+.panel-content {
+    display: none;
+}
+
+.panel-content.active {
+    display: block;
+}
+
+.panel-content h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    color: #e74c3c;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.panel-content p {
+    color: #dcdced;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Dynamic Sidebar Content Styles */
+.region-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.color-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.color-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+}
+
+.color-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    text-transform: uppercase;
+}
+
+.region-info {
+    font-size: 0.92rem;
+    color: #bdc3c7;
+    line-height: 1.6;
+}
+
+.placeholder-text {
+    font-style: italic;
+    color: #888;
+    margin-top: 20px;
+}
+
+/* Prominent Incidents Custom Formatting */
+.incident-region-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(231, 76, 60, 0.4);
+    padding-bottom: 6px;
+}
+
+.incident-info-text {
+    font-size: 0.95rem;
+    color: #dcdced;
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 12px;
+}
+
+/* Yearly Data Section Styles */
+.yearly-data-box {
+    margin-top: 18px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.yearly-data-title {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #e74c3c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+}
+
+.yearly-data-row {
+    font-size: 0.88rem;
+    color: #bdc3c7;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.yearly-data-row:last-child {
+    margin-bottom: 0;
+}
+
+.yearly-data-row span {
+    color: #f1c40f;
+    font-weight: 600;
+}
+
+.yearly-data-row strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Floating Hover Tooltip */
+.region-tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+    transform: translate(-50%, -120%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.region-tooltip.visible {
+    opacity: 1;
+}
+
+/* Map Wrapper */
+.map-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    min-height: 100vh;
+    position: relative;
+}
+
+svg {
+    width: 100%;
+    max-width: 750px;
+    height: auto;
+    display: block;
+}
+
+/* Default Map Colors (Normal State) */
+.region {
+    fill: #7f8c8d;
+    stroke: #ffffff;
+    stroke-width: 1;
+    transition: fill 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.region:hover {
+    fill: #bdc3c7;
+    stroke: #ffffff;
+}
+
+/* FIRE RISK PROFILE / SHARED REGION RISK COLORS & HOVERS */
+.map-wrapper.fire-risk-active .region {
+    fill: #e74c3c;
+}
+
+/* Region 1: High Risk (Red) */
+.map-wrapper.fire-risk-active #ncr { fill: #d63031; }
+.map-wrapper.fire-risk-active #ncr:hover { fill: #ff7675; }
+
+/* Region 3: Low Risk (Yellow) */
+.map-wrapper.fire-risk-active #car { fill: #f1c40f; }
+.map-wrapper.fire-risk-active #car:hover { fill: #ffeaa7; }
+
+/* Region 2: Medium Risk (Orange/Red) */
+.map-wrapper.fire-risk-active #ilocos { fill: #d63031; }
+.map-wrapper.fire-risk-active #ilocos:hover { fill: #ff7675; }
+
+/* Region 3: Low Risk (Yellow) */
+.map-wrapper.fire-risk-active #cagayanvalley { fill: #f1c40f; }
+.map-wrapper.fire-risk-active #cagayanvalley:hover { fill: #ffeaa7; }
+
+/* Region 1: High Risk (Red) */
+.map-wrapper.fire-risk-active #centralluzon { fill: #d63031; }
+.map-wrapper.fire-risk-active #centralluzon:hover { fill: #ff7675; }
+
+/* Region 1: High Risk (Red) */
+.map-wrapper.fire-risk-active #calabarzon { fill: #d63031; }
+.map-wrapper.fire-risk-active #calabarzon:hover { fill: #ff7675; }
+
+/* Region 3: Low Risk (Yellow) */
+.map-wrapper.fire-risk-active #mimaropa { fill: #f1c40f; }
+.map-wrapper.fire-risk-active #mimaropa:hover { fill: #ffeaa7; }
+
+/* Region 2: Medium Risk (Orange) */
+.map-wrapper.fire-risk-active #bicol { fill: #e67e22; }
+.map-wrapper.fire-risk-active #bicol:hover { fill: #f39c12; }
+
+/* Region 1: High Risk (Red) */
+.map-wrapper.fire-risk-active #westernvisayas { fill: #d63031; }
+.map-wrapper.fire-risk-active #westernvisayas:hover { fill: #ff7675; }
+
+/* Region 1: High Risk (Red) */
+.map-wrapper.fire-risk-active #centralvisayas { fill: #d63031; }
+.map-wrapper.fire-risk-active #centralvisayas:hover { fill: #ff7675; }
+
+/* Region 3: Low Risk (Yellow) */
+.map-wrapper.fire-risk-active #easternvisayas { fill: #f1c40f; }
+.map-wrapper.fire-risk-active #easternvisayas:hover { fill: #ffeaa7; }
+
+/* Region 1: High Risk (Red) */
+.map-wrapper.fire-risk-active #zamboangapeninsula { fill: #d63031; }
+.map-wrapper.fire-risk-active #zamboangapeninsula:hover { fill: #ff7675; }
+
+/* Region 1: High Risk (Red) */
+.map-wrapper.fire-risk-active #northernmindanao { fill: #d63031; }
+.map-wrapper.fire-risk-active #northernmindanao:hover { fill: #ff7675; }
+
+/* Region 1: High Risk (Red) */
+.map-wrapper.fire-risk-active #davao { fill: #d63031; }
+.map-wrapper.fire-risk-active #davao:hover { fill: #ff7675; }
+
+/* Region 2: Medium Risk (Orange) */
+.map-wrapper.fire-risk-active #soccsksargen { fill: #e67e22; }
+.map-wrapper.fire-risk-active #soccsksargen:hover { fill: #f39c12; }
+
+/* Region 2: Medium Risk (Orange) */
+.map-wrapper.fire-risk-active #caraga { fill: #e67e22; }
+.map-wrapper.fire-risk-active #caraga:hover { fill: #f39c12; }
+
+/* Region 3: Low Risk (Yellow) */
+.map-wrapper.fire-risk-active #barmm { fill: #f1c40f; }
+.map-wrapper.fire-risk-active #barmm:hover { fill: #ffeaa7; }
+
+/* GOALS FEATURE GREEN HOVER STATE OVERRIDE */
+.map-wrapper.goals-mode-active svg path:hover,
+.map-wrapper.goals-mode-active svg g:hover {
+    fill: #2ecc71 !important;
+    stroke: #27ae60 !important;
+    cursor: pointer;
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+/* Fire Cursor Overlay Canvas */
+#fireCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+}
